@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Diri</title>
+    <title>BIODATA</title>
+    
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #e0f7fa; /* Warna latar belakang yang sesuai */
             margin: 0;
             padding: 20px;
         }
@@ -19,9 +20,17 @@
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            border: 2px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+        }
         .profile {
             display: flex;
-            margin-bottom: 20px;
+            margin-bottom: 40px; /* Jarak antara kedua biodata */
+            justify-content: center; /* Memusatkan konten */
         }
         .profile img {
             border-radius: 50%;
@@ -29,6 +38,30 @@
             height: 100px;
             margin-right: 20px;
             cursor: pointer;
+            transition: border-radius 0.3s ease, transform 0.3s ease;
+        }
+        .profile img:hover {
+            border-radius: 20%;
+            transform: scale(1.1);
+        }
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .profile-info p {
+            margin: 5px 0;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+        .details {
+            display: none;
+            margin-top: 10px;
+            text-align: left;
         }
         .modal {
             display: none;
@@ -39,56 +72,90 @@
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgba(0,0,0,0.9);
+            background-color: rgba(0, 0, 0, 0.8);
             justify-content: center;
             align-items: center;
         }
         .modal img {
-            margin: auto;
-            display: block;
-            width: 80%;
-            max-width: 700px;
+            width: 300px;
+            height: 300px;
+            border-radius: 15%;
+            animation: zoomIn 0.5s;
+        }
+        @keyframes zoomIn {
+            from {
+                transform: scale(0);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+        @media (max-width: 600px) {
+            .profile {
+                flex-direction: column;
+                align-items: center;
+            }
+            .profile img {
+                margin-bottom: 10px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Data Diri</h1>
+        <h1>BIODATA</h1>
         <div class="profile">
             <img src="foto1.jpg" alt="Foto Orang 1" onclick="openModal('foto1.jpg')">
             <div class="profile-info">
                 <h2>Kadek Edy Kurniawan</h2>
-                <p>Usia: 16 Tahun</p>
-                <p>Hobi: - </p>
-                <p>Organisasi: codex</p>
+                <p onclick="toggleVisibility(this)">NISN <span class="details">123456789</span></p>
+                <p onclick="toggleVisibility(this)">USIA <span class="details">16 TAHUN</span></p>
+                <p onclick="toggleVisibility(this)">HOBI <span class="details">Bermain Musik</span></p>
+                <p onclick="toggleVisibility(this)">ORGANISASI <span class="details">codex</span></p>
+                <p onclick="toggleVisibility(this)">TANGGAL LAHIR <span class="details">1 JANUARI 2007</span></p>
+                <p onclick="toggleVisibility(this)">KELAS DAN SEKOLAH <span class="details">KELAS 10, SMA NEGERI 1</span></p>
+                <p onclick="toggleVisibility(this)">ALAMAT <span class="details">Jl. Raya No. 123, Denpasar</span></p>
+                <p onclick="toggleVisibility(this)">KONTAK <span class="details">081234567890</span></p>
+                <p onclick="toggleVisibility(this)">MEDIA SOSIAL <span class="details"><a href="https://www.linkedin.com/in/kadekedy" target="_blank">LinkedIn</a></span></p>
+                <p onclick="toggleVisibility(this)">MOTTO <span class="details">"Belajar adalah kunci kesuksesan."</span></p>
             </div>
         </div>
         <div class="profile">
             <img src="foto2.jpg" alt="Foto Orang 2" onclick="openModal('foto2.jpg')">
             <div class="profile-info">
                 <h2>Muh.syahrul safriadi</h2>
-                <p>Usia: 17 Tahun</p>
-                <p>Hobi: Mancing</p>
-                <p>Organisasi: - </p>
+                <p onclick="toggleVisibility(this)">NISN <span class="details">987654321</span></p>
+                <p onclick="toggleVisibility(this)">USIA <span class="details">17 TAHUN</span></p>
+                <p onclick="toggleVisibility(this)">HOBI <span class="details">MANCING</span></p>
+                <p onclick="toggleVisibility(this)">ORGANISASI <span class="details">-</span></p>
+                <p onclick="toggleVisibility(this)">TANGGAL LAHIR <span class="details">15 MARET 2006</span></p>
+                <p onclick="toggleVisibility(this)">KELAS DAN SEKOLAH <span class="details">KELAS 11, SMA NEGERI 2</span></p>
+                <p onclick="toggleVisibility(this)">ALAMAT <span class="details">Jl. Merdeka No. 45, Badung</span></p>
+                <p onclick="toggleVisibility(this)">KONTAK <span class="details">082345678901</span></p>
+                <p onclick="toggleVisibility(this)">MEDIA SOSIAL <span class="details"><a href="https://www.linkedin.com/in/muhsyahruls" target="_blank">LinkedIn</a></span></p>
+                <p onclick="toggleVisibility(this)">MOTTO <span class="details">"Kerja keras membuahkan hasil."</span></p>
             </div>
         </div>
     </div>
 
     <div id="myModal" class="modal" onclick="closeModal()">
-        <img class="modal-content" id="img01">
+        <img id="modalImage" src="" alt="Foto Besar">
     </div>
 
     <script>
-        function openModal(imgSrc) {
-            var modal = document.getElementById("myModal");
-            var modalImg = document.getElementById("img01");
-            modal.style.display = "flex";
-            modalImg.src = imgSrc;
+        function openModal(imageSrc) {
+            document.getElementById('modalImage').src = imageSrc;
+            document.getElementById('myModal').style.display = "flex";
         }
 
         function closeModal() {
-            var modal = document.getElementById("myModal");
-            modal.style.display = "none";
+            document.getElementById('myModal').style.display = "none";
+        }
+
+        function toggleVisibility(element) {
+            const details = element.querySelector('.details');
+            details.style.display = details.style.display === 'none' || details.style.display === '' ? 'inline' : 'none';
+            element.innerHTML = details.style.display === 'inline' ? details.innerHTML : element.childNodes[0].nodeValue + ' ' + details.innerHTML;
         }
     </script>
 </body>
