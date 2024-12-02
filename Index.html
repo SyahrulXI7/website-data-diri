@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Diri</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .profile {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .profile img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            margin-right: 20px;
+            cursor: pointer;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal img {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Data Diri</h1>
+        <div class="profile">
+            <img src="foto1.jpg" alt="Foto Orang 1" onclick="openModal('foto1.jpg')">
+            <div class="profile-info">
+                <h2>Kadek Edy Kurniawan</h2>
+                <p>Usia: 16 Tahun</p>
+                <p>Hobi: - </p>
+                <p>Organisasi: codex</p>
+            </div>
+        </div>
+        <div class="profile">
+            <img src="foto2.jpg" alt="Foto Orang 2" onclick="openModal('foto2.jpg')">
+            <div class="profile-info">
+                <h2>Muh.syahrul safriadi</h2>
+                <p>Usia: 17 Tahun</p>
+                <p>Hobi: Mancing</p>
+                <p>Organisasi: - </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="myModal" class="modal" onclick="closeModal()">
+        <img class="modal-content" id="img01">
+    </div>
+
+    <script>
+        function openModal(imgSrc) {
+            var modal = document.getElementById("myModal");
+            var modalImg = document.getElementById("img01");
+            modal.style.display = "flex";
+            modalImg.src = imgSrc;
+        }
+
+        function closeModal() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+    </script>
+</body>
+</html>
